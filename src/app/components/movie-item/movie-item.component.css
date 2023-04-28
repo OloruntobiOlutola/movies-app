@@ -1,0 +1,37 @@
+.movie-item {
+  display: block;
+  min-height: 325px;
+  border: 5px;
+  background-color: var(--bg-color-light);
+  border: 1px solid var(--bg-color);
+  position: relative;
+}
+
+.movie-item-image img {
+  height: 275px;
+  width: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.movie-item-rating {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 10px;
+  left: 10px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: var(--bg-color-light);
+}
+
+.material-icons {
+  color: #d4af37;
+  margin-right: 5px;
+}
+
+.movie-item-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

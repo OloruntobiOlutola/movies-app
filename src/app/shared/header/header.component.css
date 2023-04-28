@@ -1,0 +1,36 @@
+header {
+  top: 0;
+  left: 0;
+  position: sticky;
+  z-index: 100;
+  margin-bottom: 0.1rem;
+}
+
+.logo {
+  height: 60px;
+}
+
+.navbar-logo {
+  display: block;
+}
+
+.navbar-link {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+.nav-items {
+  display: inline;
+  margin-left: 1rem;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 2rem;
+  background-color: var(--bg-color-light);
+  min-height: 65px;
+  margin: 0;
+  border-bottom: 1px solid rgb(255, 255, 255, 0.1);
+}

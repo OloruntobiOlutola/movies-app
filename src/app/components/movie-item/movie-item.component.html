@@ -1,0 +1,11 @@
+<a class="movie-item">
+  <div class="movie-item-rating">
+    <i class="material-icons">star</i>
+    <span>{{ movie.vote_average }}</span
+    >/10
+  </div>
+  <div class="movie-item-image">
+    <img src="{{ imageurl }}{{ movie.poster_path }}" alt="{{ movie.title }}" />
+  </div>
+  <div class="movie-item-title">{{ movie.title }}</div>
+</a>
