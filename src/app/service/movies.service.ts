@@ -20,4 +20,16 @@ export class MoviesService {
         })
       );
   }
+
+  async searchMovies(page: number = 1) {
+    return this.httpClient
+      .get<ResponseDTO>(
+        `${this.baseUrl}movie/popular?api_key=${this.apiKey}&page=${page}`
+      )
+      .pipe(
+        switchMap((res) => {
+          return of(res.results);
+        })
+      );
+  }
 }

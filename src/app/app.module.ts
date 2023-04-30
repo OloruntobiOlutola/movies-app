@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { SliderComponent } from './components/slider/slider.component';
 import { ItemsBannerComponent } from './components/items-banner/items-banner.component';
 import { MovieItemComponent } from './components/movie-item/movie-item.component';
+import { PaginatorModule } from 'primeng/paginator';
+import { MovieComponent } from './pages/movie/movie.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { MovieItemComponent } from './components/movie-item/movie-item.component
     SliderComponent,
     ItemsBannerComponent,
     MovieItemComponent,
+    MovieComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ import { MovieItemComponent } from './components/movie-item/movie-item.component
     BrowserAnimationsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    PaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
