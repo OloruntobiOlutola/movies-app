@@ -1,0 +1,28 @@
+::ng-deep .p-tabview-nav-container {
+  display: flex;
+  justify-content: center;
+}
+
+.poster {
+  width: 100%;
+  /* max-height: 25rem;
+  object-fit: contain; */
+}
+
+.overview {
+  line-height: 1.6;
+}
+
+.stat {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.label {
+  width: 7rem;
+  font-weight: bold;
+}
+
+.value {
+  color: var(--primary-color);
+}
