@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {
+  MovieCredits,
+  MovieCreditsResponse,
   MovieDetailDto,
   MovieImages,
   ResponseDTO,
   VideoResponse,
 } from '../models/movies';
 import { of, switchMap } from 'rxjs';
+import { GenreDto } from '../models/genres';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +31,12 @@ export class MoviesService {
     );
   }
 
+  async getMovieCredits(id: string) {
+    return this.httpClient.get<MovieCreditsResponse>(
+      `${this.baseUrl}movie/${id}/credits?api_key=${this.apiKey}`
+    );
+  }
+
   async getMovieVideos(id: string) {
     return this.httpClient
       .get<VideoResponse>(
@@ -36,6 +45,16 @@ export class MoviesService {
       .pipe(
         switchMap((res) => {
           return of(res.results);
+        })
+      );
+  }
+
+  async getMovieGenres() {
+    return this.httpClient
+      .get<GenreDto>(`${this.baseUrl}/genre/movie/list?api_key=${this.apiKey}`)
+      .pipe(
+        switchMap((res) => {
+          return of(res.genres);
         })
       );
   }
@@ -50,15 +69,38 @@ export class MoviesService {
       );
   }
 
-  async searchMovies(page: number = 1) {
+  async getMoviesByCategory(genreId: string, page: number = 1) {
     return this.httpClient
       .get<ResponseDTO>(
-        `${this.baseUrl}movie/popular?api_key=${this.apiKey}&page=${page}`
+        `${this.baseUrl}discover/movie?with_genres=${genreId}&api_key=${this.apiKey}&page=${page}`
       )
       .pipe(
         switchMap((res) => {
           return of(res.results);
         })
       );
+  }
+
+  async getSimilarMovies(id: string, count: number = 4) {
+    return this.httpClient
+      .get<ResponseDTO>(
+        `${this.baseUrl}movie/${id}/similar?api_key=${this.apiKey}`
+      )
+      .pipe(
+        switchMap((res) => {
+          return of(res.results.slice(0, count));
+        })
+      );
+  }
+
+  async searchMovies(page: number = 1, value?: string) {
+    const uri = value
+      ? `${this.baseUrl}search/movie?api_key=${this.apiKey}&page=${page}&query=${value}`
+      : `${this.baseUrl}movie/popular?api_key=${this.apiKey}&page=${page}`;
+    return this.httpClient.get<ResponseDTO>(uri).pipe(
+      switchMap((res) => {
+        return of(res.results);
+      })
+    );
   }
 }

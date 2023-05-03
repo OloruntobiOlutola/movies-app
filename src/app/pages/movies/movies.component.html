@@ -1,5 +1,20 @@
 <div class="container">
   <div class="row mb-2">
+    <div class="col-12 input">
+      <div class="p-fluid here">
+        <span class="p-input-icon-left field">
+          <i class="pi pi-search"></i>
+          <input
+            type="text"
+            pInputText
+            [(ngModel)]="value"
+            (change)="valueChanged()"
+          />
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-2">
     <div class="col-6 col-md-4 col-lg-3" *ngFor="let item of movies">
       <movies-movie-item [movie]="item"></movies-movie-item>
     </div>

@@ -88,4 +88,32 @@
       </div>
     </p-tabPanel>
   </p-tabView>
+  <div class="container">
+    <p-carousel
+      *ngIf="movieCredits"
+      [value]="movieCredits"
+      [numVisible]="5"
+      [numScroll]="5"
+    >
+      <ng-template let-actor pTemplate="item">
+        <div class="actor">
+          <img
+            [src]="imageurl + actor.profile_path"
+            [alt]="actor.name"
+            class="actor_img"
+          />
+          <div class="actor_name">
+            {{ actor.name }}
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+  <div class="container">
+    <div class="row mb-2" *ngIf="similarMovies">
+      <div class="col-6 col-md-3 col-lg-3" *ngFor="let item of similarMovies">
+        <movies-movie-item [movie]="item"></movies-movie-item>
+      </div>
+    </div>
+  </div>
 </ng-container>

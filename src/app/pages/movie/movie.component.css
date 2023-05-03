@@ -26,3 +26,13 @@
 .value {
   color: var(--primary-color);
 }
+
+.actor_img {
+  width: 100%;
+}
+
+.actor_name {
+  text-align: center;
+  color: var(--primary-color);
+  margin: 10px 0;
+}

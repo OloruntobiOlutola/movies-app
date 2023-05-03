@@ -2,7 +2,7 @@
   <a class="movie-item" [routerLink]="'/movie/' + movie.id">
     <div class="movie-item-rating">
       <i class="material-icons">star</i>
-      <span>{{ movie.vote_average }}</span
+      <span>{{ movie.vote_average || 0 }}</span
       >/10
     </div>
     <div class="movie-item-image">

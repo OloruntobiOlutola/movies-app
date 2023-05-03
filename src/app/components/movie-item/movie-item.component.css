@@ -12,6 +12,7 @@
   width: 100%;
   border-radius: 5px;
   object-fit: cover;
+  margin-bottom: 0.5rem;
 }
 
 .movie-item-rating {
@@ -34,4 +35,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--primary-color);
 }
