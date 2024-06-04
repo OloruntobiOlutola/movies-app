@@ -13,6 +13,7 @@ export class MoviesComponent implements OnInit {
   movies!: Movie[];
   genreId!: string;
   value!: string;
+  rows = 10;
 
   constructor(
     private moviesService: MoviesService,
@@ -46,6 +47,8 @@ export class MoviesComponent implements OnInit {
   }
 
   onPageChange(event: any) {
+    console.log(event);
+    this.rows = event?.rows;
     if (this.genreId) {
       this.getMoviesByCategory(this.genreId, event.page + 1);
     } else {

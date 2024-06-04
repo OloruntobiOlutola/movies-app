@@ -23,9 +23,9 @@
     <p-paginator
       (onPageChange)="onPageChange($event)"
       [first]="1"
-      [rows]="20"
+      [rows]="rows"
       [totalRecords]="10000"
-      [rowsPerPageOptions]="[10, 20]"
+      [rowsPerPageOptions]="[10, 20, 30, { showAll: true }]"
     ></p-paginator>
   </div>
 </div>
