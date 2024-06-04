@@ -1,6 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { first } from 'rxjs';
 import { IMAGE_SIZE_URL } from 'src/app/constants/image-size-url';
 import {
   Movie,
@@ -16,7 +15,7 @@ import { MoviesService } from 'src/app/service/movies.service';
   templateUrl: './movie.component.html',
   styleUrls: ['./movie.component.css'],
 })
-export class MovieComponent implements OnInit, OnDestroy {
+export class MovieComponent implements OnInit {
   movie!: MovieDetailDto;
   imageurl: string = IMAGE_SIZE_URL.medium;
   largeUrl: string = IMAGE_SIZE_URL.large;
@@ -31,12 +30,8 @@ export class MovieComponent implements OnInit, OnDestroy {
     private moviesService: MoviesService
   ) {}
 
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
-
   ngOnInit() {
-    this.route.params.pipe(first()).subscribe(({ id }) => {
+    this.route.params.subscribe(({ id }) => {
       this.getMovie(id);
       this.getMovieVideo(id);
       this.getMovieImages(id);
