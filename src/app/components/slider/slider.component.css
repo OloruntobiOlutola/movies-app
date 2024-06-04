@@ -5,8 +5,15 @@
   flex-direction: column;
   justify-content: space-between;
   color: #999;
-  background-color: #000;
   width: 100%;
+}
+
+.slide-pane-container {
+  position: absolute;
+  left: 0rem;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0) 40%, transparent 60%);
 }
 
 .slide {
@@ -40,7 +47,7 @@
   position: absolute;
   top: 6rem;
   left: 6rem;
-  width: 50%;
+  width: 40%;
 }
 
 .name {
