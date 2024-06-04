@@ -64,7 +64,10 @@ export class MoviesService {
       .get<ResponseDTO>(`${this.baseUrl}movie/${type}?api_key=${this.apiKey}`)
       .pipe(
         switchMap((res) => {
-          return of(res.results.slice(0, count));
+          return of({
+            res: res.results.slice(0, count),
+            totalCount: res.total_results > 10000 ? 10000 : res.total_results,
+          });
         })
       );
   }
@@ -76,7 +79,10 @@ export class MoviesService {
       )
       .pipe(
         switchMap((res) => {
-          return of(res.results);
+          return of({
+            res: res.results,
+            totalCount: res.total_results > 10000 ? 10000 : res.total_results,
+          });
         })
       );
   }
@@ -88,7 +94,10 @@ export class MoviesService {
       )
       .pipe(
         switchMap((res) => {
-          return of(res.results.slice(0, count));
+          return of({
+            res: res.results.slice(0, count),
+            totalCount: res.total_results > 10000 ? 10000 : res.total_results,
+          });
         })
       );
   }
@@ -99,7 +108,10 @@ export class MoviesService {
       : `${this.baseUrl}movie/popular?api_key=${this.apiKey}&page=${page}`;
     return this.httpClient.get<ResponseDTO>(uri).pipe(
       switchMap((res) => {
-        return of(res.results);
+        return of({
+          res: res.results,
+          totalCount: res.total_results > 10000 ? 10000 : res.total_results,
+        });
       })
     );
   }

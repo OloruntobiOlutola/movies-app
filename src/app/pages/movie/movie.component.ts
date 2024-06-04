@@ -48,7 +48,7 @@ export class MovieComponent implements OnInit {
 
   async getSimilarMovies(id: string) {
     (await this.moviesService.getSimilarMovies(id)).subscribe((movie) => {
-      this.similarMovies = movie;
+      this.similarMovies = movie.res;
     });
   }
 

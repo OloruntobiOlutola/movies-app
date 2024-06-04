@@ -13,7 +13,8 @@ export class MoviesComponent implements OnInit {
   movies!: Movie[];
   genreId!: string;
   value!: string;
-  rows = 10;
+  rows = 20;
+  totalCount: any;
 
   constructor(
     private moviesService: MoviesService,
@@ -34,20 +35,22 @@ export class MoviesComponent implements OnInit {
   async getMoviesByPage(page: number, value?: string) {
     (await this.moviesService.searchMovies(page, value)).subscribe((res) => {
       console.log(value);
-      this.movies = res;
+      this.movies = res.res;
+      this.totalCount = res.totalCount;
     });
   }
 
   async getMoviesByCategory(id: string, page?: number) {
     (await this.moviesService.getMoviesByCategory(id, page)).subscribe(
       (res) => {
-        this.movies = res;
+        this.movies = res.res;
+        this.totalCount = res.totalCount;
       }
     );
   }
 
   onPageChange(event: any) {
-    console.log(event);
+    console.log('Now ', this.value);
     this.rows = event?.rows;
     if (this.genreId) {
       this.getMoviesByCategory(this.genreId, event.page + 1);
