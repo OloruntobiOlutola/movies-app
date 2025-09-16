@@ -37,6 +37,10 @@
   left: 0;
 }
 
+.reviews {
+    margin-left: 1rem;
+}
+
 .image {
   height: 100%;
   width: 100%;
@@ -115,9 +119,5 @@ span:not(:last-child, :first-child):after {
     height: 100%;
     width: 100%;
     left: 0;
-  }
-
-  .reviews {
-    margin-left: 1rem;
   }
 }
