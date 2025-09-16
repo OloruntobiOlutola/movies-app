@@ -51,7 +51,7 @@ export class MoviesService {
 
   async getMovieGenres() {
     return this.httpClient
-      .get<GenreDto>(`${this.baseUrl}/genre/movie/list?api_key=${this.apiKey}`)
+      .get<GenreDto>(`${this.baseUrl}genre/movie/list?api_key=${this.apiKey}`)
       .pipe(
         switchMap((res) => {
           return of(res.genres);
